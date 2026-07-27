@@ -1,49 +1,75 @@
 # Memory Match Game
 
-A classic memory matching card game built with Pygame.
+A simple memory-card matching game built with Python and Pygame. Flip cards to find matching pairs, choose different grid sizes, track your score and time, and try to beat the high scores.
 
 ## Features
 
-- 4×3 grid of cards (6 matching pairs)
-- Visual feedback for matches
-- Time-delayed card flipping
-- Simple, clean interface
+- Classic memory match gameplay
+- Multiple board sizes, including 3x4, 4x4, 4x5, 5x6, and 6x6
+- Pause, restart, and mute controls
+- High score tracking for each grid size
+- Sound effects and background music when assets are available
 
 ## Requirements
 
-- Python 3.x
-- Pygame library
+- Python 3.8+
+- pip
 
 ## Installation
 
-1. Ensure Python 3.x is installed
-2. Install Pygame: pip install pygame
-3. Prepare 6 image files named `image1.jpg` through `image6.jpg` in the same directory
+Clone the repository and create a virtual environment before installing anything:
 
-## How to Play
+```bash
+git clone <repository-url>
+cd MemoryMatchGame
+python -m venv .venv
+```
 
-1. Run the script: python Match_Game.py
-2. Click on cards to flip them
-3. Find matching pairs of images
-4. Match all pairs to win
+Activate the virtual environment:
+
+- Windows (PowerShell):
+  ```bash
+  .\.venv\Scripts\Activate.ps1
+  ```
+- Windows (Command Prompt):
+  ```bash
+  .\.venv\Scripts\activate.bat
+  ```
+
+Then install the dependencies inside the virtual environment:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+## Running the Game
+
+Start the game with:
+
+```bash
+python main.py
+```
 
 ## Controls
 
-- Mouse: Click on cards to flip them
-- Close window to exit game
+- Click a card to flip it over
+- Match two identical cards to clear them
+- Use the on-screen buttons to:
+  - Start a game
+  - Open the How to Play screen
+  - Change options
+  - Pause or restart the round
+  - Mute audio
+- Use your mouse for all interactions
 
-## Customization
+## Project Structure
 
-To modify the game:
+- `main.py` - Main game entry point
+- `assets/` - Game images, sounds, music, and high score files
+- `requirements.txt` - Python dependencies
+- `planning/` - Project planning notes
 
-- Change `WIDTH` and `HEIGHT` for different window sizes
-- Adjust `COLS` and `ROWS` for different grid sizes
-- Modify `CARD_WIDTH` and `CARD_HEIGHT` for different card sizes
-- Change `delay` to adjust flip timing
+## Notes
 
-## Troubleshooting
-
-- If images don't load:
-- Ensure image files are in the correct directory
-- Verify filenames match exactly (`image1.jpg`, etc.)
-- Check image file formats are supported by Pygame
+1. If some audio or image assets are missing, the game will usually still launch and warn you in the terminal instead of crashing.
+2. .msi coming soon
