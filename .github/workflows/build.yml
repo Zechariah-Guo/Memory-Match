@@ -35,21 +35,21 @@ jobs:
       if: matrix.os == 'windows-latest'
       run: | 
         pyinstaller --onefile --windowed --name "Match Game" --icon "icon.ico" --add-data "assets;assets" --add-data "NotoSansSymbols2-Regular.ttf;." --add-data "icon.png;." main.py
-        mv "dist/Match Game.exe" dist/game-windows.exe
+        mv "dist/Match Game.exe" dist/Match-Game-Windows.exe
 
     # MACOS BUILD
     - name: Build macOS App
       if: matrix.os == 'macos-latest'
       run: |
         pyinstaller --onefile --windowed --name "Match Game" --icon "icon.icns" --add-data "assets:assets" --add-data "NotoSansSymbols2-Regular.ttf:." --add-data "icon.png:." main.py
-        cd dist && zip -r game-mac.zip "Match Game.app"
+        cd dist && zip -r Match-Game-Mac.zip "Match Game.app"
 
     # LINUX BUILD
     - name: Build Linux Executable
       if: matrix.os == 'ubuntu-latest'
       run: |
         pyinstaller --onefile --name "Match Game" --add-data "assets:assets" --add-data "NotoSansSymbols2-Regular.ttf:." --add-data "icon.png:." main.py
-        mv "dist/Match Game" dist/game-linux
+        mv "dist/Match Game" dist/Match-Game-Linux
 
     # AUTOMATICALLY PUBLISH STRAIGHT TO THE RELEASES TAB
     - name: Release Game Binaries
@@ -60,6 +60,6 @@ jobs:
         draft: false
         prerelease: false
         files: |
-          dist/game-windows.exe
-          dist/game-mac.zip
-          dist/game-linux
+          dist/Match-Game-Windows.exe
+          dist/Match-Game-Mac.zip
+          dist/Match-Game-Linux
