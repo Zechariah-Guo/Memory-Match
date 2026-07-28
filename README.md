@@ -21,6 +21,10 @@ A simple memory-card matching game built with Python and Pygame. Flip cards to f
 
 ## Installation
 
+Head over to the Releases tab and download the version that your system supports (Windows, Mac, Linux supported)
+
+OR
+
 Clone the repository and create a virtual environment before installing anything:
 
 ```bash
