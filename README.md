@@ -2,7 +2,7 @@
 
 A simple memory-card matching game built with Python and Pygame. Flip cards to find matching pairs, choose different grid sizes, track your score and time, and try to beat the high scores.
 
-![Menu Image](assets\Menu-Image.png)
+![Menu Image](assets/Menu-Image.png)
 
 ## Features
 
@@ -12,7 +12,7 @@ A simple memory-card matching game built with Python and Pygame. Flip cards to f
 - High score tracking for each grid size
 - Sound effects and background music when assets are available
 
-![Gameplay Image](assets\all_flipped.png)
+![Gameplay Image](assets/all_flipped.png)
 
 ## Requirements
 
