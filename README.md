@@ -21,7 +21,7 @@ A simple memory-card matching game built with Python and Pygame. Flip cards to f
 
 ## Installation
 
-Head over to the Releases tab and download the version that your system supports (Windows, Mac, Linux supported)
+Head over to the Releases tab and download the version that your system supports (Windows, Mac, Linux supported), then open it.
 
 OR
 
@@ -50,9 +50,7 @@ Then install the dependencies inside the virtual environment:
 python -m pip install -r requirements.txt
 ```
 
-## Running the Game
-
-Start the game with:
+And finally start the game with:
 
 ```bash
 python main.py
@@ -79,5 +77,5 @@ python main.py
 
 ## Notes
 
-1. If some audio or image assets are missing, the game will usually still launch and warn you in the terminal instead of crashing.
-2. .msi coming soon
+If some audio or image assets are missing, the game will usually still launch and warn you in the terminal instead of crashing.
+
