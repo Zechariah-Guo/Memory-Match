@@ -5,12 +5,22 @@ import sys
 import math
 import time
 
+
+def get_path(relative_path):
+    """Finds assets in normal development and inside the PyInstaller bundle."""
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+
 # Initialize Pygame
 pygame.init()
 pygame.font.init()
 
 # Initialize background music playback
-MUSIC_FILE = "assets/Far-Away-Puzzle-Places.mp3"
+MUSIC_FILE = get_path("assets/Far-Away-Puzzle-Places.mp3")
 try:
     pygame.mixer.init()
     if not os.path.exists(MUSIC_FILE):
@@ -24,7 +34,7 @@ except pygame.error as e:
     MUSIC_FILE = None
 
 # Card Sound Effects
-FLIP_SOUND_FILE = "assets/classic-click.wav"
+FLIP_SOUND_FILE = get_path("assets/classic-click.wav")
 flip_sound = None
 
 try:
@@ -35,7 +45,7 @@ except Exception as e:
     print(f"Error loading sound effect '{FLIP_SOUND_FILE}': {e}")
 
 # button Sound Effects
-SELECT_SOUND_FILE = "assets/select-click.wav"
+SELECT_SOUND_FILE = get_path("assets/select-click.wav")
 select_sound = None
 
 try:
@@ -46,7 +56,7 @@ except Exception as e:
     print(f"Error loading button sound effect '{SELECT_SOUND_FILE}': {e}")
 
 # Winning Sound Effect
-WIN_SOUND_FILE = "assets/cheering-crowd-loud-whistle.wav"
+WIN_SOUND_FILE = get_path("assets/cheering-crowd-loud-whistle.wav")
 win_sound = None
 
 try:
@@ -71,7 +81,7 @@ INFO_BAR_RESTART_SCALE = (
 )
 
 # --- Font Loading ---
-SYMBOL_FONT_FILE = "NotoSansSymbols2-Regular.ttf"
+SYMBOL_FONT_FILE = get_path("NotoSansSymbols2-Regular.ttf")
 DEFAULT_FONT = None
 try:
     TITLE_FONT = pygame.font.SysFont("Arial Black", 60)
@@ -132,7 +142,7 @@ CARD_OUTLINE_THICKNESS = 2
 
 # Game Constants
 FLIP_ANIMATION_DURATION = 0.25
-HI_SCORE_FILE_BASE = "assets/highscore"
+HI_SCORE_FILE_BASE = get_path("assets/highscore")
 
 # Define possible grid options
 RECTANGULAR_GRIDS = [(3, 4), (4, 5), (5, 6)]
@@ -294,10 +304,10 @@ def load_potential_images():
         img_path = None
 
         possible_paths = [
-            f"assets/image{i}.png",
-            f"assets/image{i}.jpg",
-            f"assets/image0{i}.png",
-            f"assets/image0{i}.jpg",
+            get_path(f"assets/image{i}.png"),
+            get_path(f"assets/image{i}.jpg"),
+            get_path(f"assets/image0{i}.png"),
+            get_path(f"assets/image0{i}.jpg"),
         ]
         for p in possible_paths:
             if os.path.exists(p):
@@ -719,17 +729,17 @@ def draw_main_menu():
     # --- Decorative Images ---
     image_paths = [
         (
-            f"assets/image0{i}.png"
-            if os.path.exists(f"assets/image0{i}.png")
+            get_path(f"assets/image0{i}.png")
+            if os.path.exists(get_path(f"assets/image0{i}.png"))
             else (
-                f"assets/image{i}.png"
-                if os.path.exists(f"assets/image{i}.png")
+                get_path(f"assets/image{i}.png")
+                if os.path.exists(get_path(f"assets/image{i}.png"))
                 else (
-                    f"assets/image0{i}.jpg"
-                    if os.path.exists(f"assets/image0{i}.jpg")
+                    get_path(f"assets/image0{i}.jpg")
+                    if os.path.exists(get_path(f"assets/image0{i}.jpg"))
                     else (
-                        f"assets/image{i}.jpg"
-                        if os.path.exists(f"assets/image{i}.jpg")
+                        get_path(f"assets/image{i}.jpg")
+                        if os.path.exists(get_path(f"assets/image{i}.jpg"))
                         else None
                     )
                 )
@@ -941,7 +951,7 @@ def draw_how_to_play():
     groups = [instructions[:3], instructions[3:]]
     text_box_indices = [0, 2]
     image_box_indices = [1, 3]
-    image_paths = ["assets/2_flipped.png", "assets/all_flipped.png"]
+    image_paths = [get_path("assets/2_flipped.png"), get_path("assets/all_flipped.png")]
 
     line_spacing = 5
     font_linesize = INFO_FONT.get_linesize()
