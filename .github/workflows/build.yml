@@ -34,21 +34,21 @@ jobs:
     - name: Build Windows Executable
       if: matrix.os == 'windows-latest'
       run: | 
-        pyinstaller --onefile --windowed --name "Match Game" --icon "icon.ico" --add-data "assets;assets" --add-data "NotoSansSymbols2-Regular.ttf;." main.py
+        pyinstaller --onefile --windowed --name "Match Game" --icon "icon.ico" --add-data "assets;assets" --add-data "NotoSansSymbols2-Regular.ttf;." --add-data "icon.png;." main.py
         mv "dist/Match Game.exe" dist/game-windows.exe
 
     # MACOS BUILD
     - name: Build macOS App
       if: matrix.os == 'macos-latest'
       run: |
-        pyinstaller --onefile --windowed --name "Match Game" --icon "icon.icns" --add-data "assets:assets" --add-data "NotoSansSymbols2-Regular.ttf:." main.py
+        pyinstaller --onefile --windowed --name "Match Game" --icon "icon.icns" --add-data "assets:assets" --add-data "NotoSansSymbols2-Regular.ttf:." --add-data "icon.png:." main.py
         cd dist && zip -r game-mac.zip "Match Game.app"
 
     # LINUX BUILD
     - name: Build Linux Executable
       if: matrix.os == 'ubuntu-latest'
       run: |
-        pyinstaller --onefile --name "Match Game" --add-data "assets:assets" --add-data "NotoSansSymbols2-Regular.ttf:." main.py
+        pyinstaller --onefile --name "Match Game" --add-data "assets:assets" --add-data "NotoSansSymbols2-Regular.ttf:." --add-data "icon.png:." main.py
         mv "dist/Match Game" dist/game-linux
 
     # AUTOMATICALLY PUBLISH STRAIGHT TO THE RELEASES TAB

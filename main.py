@@ -235,6 +235,12 @@ def initialize_screen(width=WIDTH, height=HEIGHT):
     WIDTH, HEIGHT = width, height
     screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
     pygame.display.set_caption("Memory Match!")
+    # Set window/taskbar icon
+    try:
+        icon = pygame.image.load(get_path("icon.png"))
+        pygame.display.set_icon(icon)
+    except Exception as e:
+        print(f"Warning: Could not load window icon: {e}")
 
 
 def load_and_play_music():
